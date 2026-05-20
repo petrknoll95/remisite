@@ -13,8 +13,10 @@ import HomeSliderUiIntelligence from './components/home/slider-ui/home-slider-ui
 import SectionCanvasSlider from './components/sections/section-canvas-slider.vue'
 import SectionFaq from './components/sections/section-faq.vue'
 import SectionFeatureBento from './components/sections/section-feature-bento.vue'
+import SectionHow from './components/sections/section-how.vue'
 import SectionIntegrationsMarquee from './components/sections/section-integrations-marquee.vue'
 import SectionProductOverview from './components/sections/section-product-overview.vue'
+import SectionRemiVsTools from './components/sections/section-remi-vs-tools.vue'
 import SectionSlider from './components/sections/section-slider.vue'
 
 const isDemoModalOpen = ref(false)
@@ -25,7 +27,9 @@ const isDemoModalOpen = ref(false)
     <GlobalHeader @book-demo="isDemoModalOpen = true" />
     <main class="min-h-svh bg-background text-foreground overscroll-none">
       <HomeHero @book-demo="isDemoModalOpen = true" />
+      <SectionHow />
       <SectionFeatureBento @book-demo="isDemoModalOpen = true" />
+      <SectionRemiVsTools />
       <SectionSlider>
         <template #tasks>
           <HomeSliderUiChat />

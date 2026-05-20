@@ -136,9 +136,9 @@ const BentoExpandIcon = defineComponent({
   <section :class="cn('relative mx-auto max-w-[1400px] px-6 py-24 z-1')" data-feature-bento>
     <div :class="cn('mb-12 max-w-3xl')">
       <h2 :class="cn('text-4xl font-normal leading-none tracking-tight text-balance text-foreground')">
-        The last operations hire you'll ever need<br />
+        A full suite of operational tools<br />
         <span :class="cn('text-foreground/50')">
-        Everything you need to run your service business
+          Memory, documents, integrations, and delivery.
         </span>
       </h2>
     </div>
