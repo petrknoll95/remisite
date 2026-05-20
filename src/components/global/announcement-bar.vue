@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full bg-foreground text-background"
+    class="w-full bg-foreground/10 text-foreground"
     data-announcement-bar
   >
     <div class="flex h-9 items-center justify-center gap-2 px-4 text-center font-sans text-xs sm:text-sm">
