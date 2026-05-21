@@ -130,7 +130,7 @@ const BentoExpandIcon = defineComponent({
 </script>
 
 <template>
-  <section :class="cn('relative mx-auto max-w-[1400px] px-6 py-24 z-1')" data-feature-bento>
+  <section id="features" :class="cn('relative mx-auto max-w-[1400px] scroll-mt-24 px-6 py-24 z-1')" data-feature-bento>
     <div :class="cn('mb-12 max-w-3xl')">
       <h2 :class="cn('text-4xl font-normal leading-none tracking-tight text-balance text-foreground')">
         A full suite of operational tools<br />

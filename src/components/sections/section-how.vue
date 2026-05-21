@@ -18,7 +18,7 @@ const steps = [
 </script>
 
 <template>
-  <section :class="cn('relative mx-auto max-w-[1400px] px-6 py-12 md:py-16')" data-section-how>
+  <section id="how" :class="cn('relative mx-auto max-w-[1400px] scroll-mt-24 px-6 py-12 md:py-16')" data-section-how>
     <div :class="cn('mb-12 max-w-3xl')">
       <h2 :class="cn('text-4xl font-normal leading-none tracking-tight text-balance text-foreground')">
         Add Remi once.<br />

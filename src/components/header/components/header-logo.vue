@@ -4,7 +4,7 @@ import SiteLogo from '../../global/site-logo.vue'
 
 <template>
   <a
-    href="/"
+    href="#home"
     class="inline-flex items-center text-foreground transition-colors hover:text-muted-foreground"
     aria-label="Remi home"
   >

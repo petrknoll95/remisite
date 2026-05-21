@@ -6,11 +6,11 @@ import HeaderLink from './components/header-link.vue'
 import HeaderLogo from './components/header-logo.vue'
 
 const navigationLinks = [
+  { label: 'How', href: '#how' },
   { label: 'Features', href: '#features' },
-  { label: 'Documentation', href: '#documentation' },
+  { label: 'Compare', href: '#compare' },
   { label: 'Integrations', href: '#integrations' },
-  { label: 'Roadmap', href: '#roadmap' },
-  { label: 'Pricing', href: '#pricing' },
+  { label: 'FAQ', href: '#faq' },
 ]
 
 const emit = defineEmits(['book-demo'])

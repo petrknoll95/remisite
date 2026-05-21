@@ -565,7 +565,7 @@ const MessageBubble = {
 </script>
 
 <template>
-  <section ref="heroSectionRef"
+  <section id="home" ref="heroSectionRef"
     class="relative w-full min-h-[clamp(800px,100svh,100svh)] grid grid-rows-1 grid-cols-1 md:py-4">
     <div ref="heroShaderRef" class="hero-shader absolute inset-0 h-full w-full opacity-0 mask-b-from-0% mask-b-to-100%">
       <Shader class="absolute inset-0 h-full w-full" disable-telemetry>

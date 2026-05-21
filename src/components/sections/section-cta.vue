@@ -6,7 +6,7 @@ const emit = defineEmits(['book-demo'])
 </script>
 
 <template>
-  <section class="mx-auto max-w-[1400px] px-6 py-24" data-section-cta>
+  <section id="demo" class="mx-auto max-w-[1400px] scroll-mt-24 px-6 py-24" data-section-cta>
     <div class="relative overflow-hidden rounded-[2rem] bg-background px-6 py-20 text-center sm:px-10 lg:px-16">
       <div class="absolute inset-0 h-full w-full" aria-hidden="true">
         <Shader class="absolute inset-0 h-full w-full" disable-telemetry>

@@ -10,7 +10,7 @@ import HomeSliderUiChat from './components/home/slider-ui/home-slider-ui-chat.vu
 import HomeSliderUiFiles from './components/home/slider-ui/home-slider-ui-files.vue'
 import HomeSliderUiIntegrations from './components/home/slider-ui/home-slider-ui-integrations.vue'
 import HomeSliderUiIntelligence from './components/home/slider-ui/home-slider-ui-intelligence.vue'
-import SectionCanvasSlider from './components/sections/section-canvas-slider.vue'
+import SectionSurfaces from './components/sections/section-surfaces.vue'
 import SectionCta from './components/sections/section-cta.vue'
 import SectionFaq from './components/sections/section-faq.vue'
 import SectionFeatureBento from './components/sections/section-feature-bento.vue'
@@ -46,29 +46,7 @@ const isDemoModalOpen = ref(false)
         </template>
       </SectionSlider>
       <SectionProductOverview />
-      <SectionCanvasSlider>
-        <template #imessage>
-          <video
-            src="/videos/remi-imessage-animation-1.mp4"
-            class="w-full h-full object-cover absolute inset-0"
-            autoplay
-            loop
-            muted
-            playsinline
-            preload="metadata"
-            aria-label="Remi in iMessage animation"
-            data-canvas-slider-video="imessage"
-          />
-        </template>
-        <template #web>
-          <img
-            src="/images/home-webapp@2x.jpg"
-            alt="Remi web app interface"
-            class="absolute inset-0 h-full w-full object-cover"
-            data-canvas-slider-image="web"
-          >
-        </template>
-      </SectionCanvasSlider>
+      <SectionSurfaces />
       <SectionIntegrationsMarquee />
       <SectionFaq />
       <SectionCta @book-demo="isDemoModalOpen = true" />

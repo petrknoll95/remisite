@@ -74,7 +74,7 @@ const scrollMobileNext = () => {
 </script>
 
 <template>
-  <section :class="cn('relative mx-auto max-w-[1400px] px-6 py-24')" data-remi-vs-tools>
+  <section id="compare" :class="cn('relative mx-auto max-w-[1400px] scroll-mt-24 px-6 py-24')" data-remi-vs-tools>
     <div :class="cn('mb-12 max-w-4xl')">
       <h2 :class="cn('text-4xl font-normal leading-none tracking-tight text-balance text-foreground')">
         AI tools answer questions.<br />
