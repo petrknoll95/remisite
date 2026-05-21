@@ -25,6 +25,7 @@ defineProps({
   <component :is="href ? 'a' : 'button'" :href="href || undefined" :type="href ? undefined : type" :class="cn(
     'relative cursor-pointer inline-flex items-center justify-center rounded-full text-base font-normal tracking-[-0.02em] leading-none transition-colors',
     'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
+    'select-none',
     'text-nowrap whitespace-nowrap',
     'before:content-[\'\'] before:absolute before:inset-0 before:rounded-full before:z-0',
     'hover:before:-inset-0.5 before:transition-all before:duration-200 before:ease-in-out',

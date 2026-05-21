@@ -554,7 +554,7 @@ const MessageBubble = {
         'div',
         {
           class: [
-            'hero-message-content relative z-1 max-w-[min(72vw,22em)] whitespace-nowrap rounded-[999em] px-[0.875em] py-[0.5em] text-[1em] font-normal leading-[1.25em] tracking-tight',
+            'hero-message-content select-none relative z-1 max-w-[min(72vw,22em)] whitespace-nowrap rounded-[999em] px-[0.875em] py-[0.5em] text-[1em] font-normal leading-[1.25em] tracking-tight',
             props.kind === 'file' ? 'hero-message-content-file' : 'hero-message-content-command',
           ],
         },

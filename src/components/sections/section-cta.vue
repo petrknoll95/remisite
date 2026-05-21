@@ -1,5 +1,5 @@
 <script setup>
-import { Shader, Godrays, Fog, Swirl, ChromaticAberration } from 'shaders/vue'
+import { Shader, Godrays, Fog, Swirl, ChromaticAberration, LinearGradient } from 'shaders/vue'
 import Button from '../global/button.vue'
 
 const emit = defineEmits(['book-demo'])
@@ -19,12 +19,21 @@ const emit = defineEmits(['book-demo'])
               :detail="1.5"
               :blend="50"
             />
+            <LinearGradient
+              :color-a="'oklch(1 0 0/0)'"
+              :color-b="'oklch(1 0 0)'"
+              :angle="0"
+              :blend-mode="overlay"
+              :start="{ x: 0.5, y: 0 }"
+              :end="{ x: 0.5, y: 1 }"
+            />
             <Fog
               :animated="true"
               :speed="0.5"
               :color-a="'oklch(1 0 0)'"
               :color-b="'oklch(1 0 0/0)'"
-              :mouse-influence="0.5"
+              :mouse-influence="1"
+              :blend-mode="plusLighter"
             />
             <Godrays
               :animated="true"
@@ -39,22 +48,11 @@ const emit = defineEmits(['book-demo'])
         </Shader>
       </div>
 
-      <div class="relative z-1 mx-auto flex max-w-3xl flex-col items-center gap-8">
-        <div class="space-y-4">
-          <p class="text-sm font-medium tracking-tight text-foreground/45">
-            Ready when your team is
-          </p>
-          <h2 class="text-[clamp(3rem,7vw,5rem)] font-normal leading-[0.95em] tracking-[-0.03em] text-balance text-foreground">
-            Put Remi to work on your operations.
-          </h2>
-          <p class="mx-auto max-w-[42ch] text-base leading-normal tracking-tight text-foreground/55">
-            Give Remi the context, tools, and handoffs your team depends on, then let it keep the work moving.
-          </p>
-        </div>
+      <div class="relative z-1 mx-auto flex max-w-3xl flex-col items-center justify-center gap-8 min-h-120">
 
-        <div class="flex flex-wrap items-center justify-center gap-2">
-          <Button @click="emit('book-demo')">Book a Demo</Button>
-          <Button variant="secondary" href="#pricing">Pricing</Button>
+        <div class="flex flex-col items-center justify-center gap-16">
+          <span class="text-5xl font-normal">Ready when your team is</span>
+          <button class="relative select-none cursor-pointer rounded-full px-3 py-2 text-2xl font-normal text-background transition-colors tracking-[-0.02em] before:content-[''] before:absolute before:-inset-3 before:rounded-full before:z-0 before:bg-foreground before:transition-all before:duration-200 before:ease-in-out hover:before:-inset-4" @click="emit('book-demo')"><span class="relative z-10">Book a Demo</span></button>
         </div>
       </div>
     </div>
