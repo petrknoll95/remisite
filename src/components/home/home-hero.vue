@@ -3,6 +3,7 @@ import Button from '../global/button.vue'
 import { gsap } from 'gsap'
 import { Shader, Godrays, Fog, Swirl, ChromaticAberration } from 'shaders/vue'
 import { h, onBeforeUnmount, onMounted, ref } from 'vue'
+import AnnouncementBar from '../global/announcement-bar.vue'
 
 const emit = defineEmits(['book-demo'])
 
@@ -421,6 +422,7 @@ const heroBubbleRevealState = {
 
 const createHeroMessageStyle = (message, progress, position) => {
   const depth = message.startDepth + (message.endDepth - message.startDepth) * progress
+  const fogVisibility = getHeroMessageFogVisibility(depth)
   const opacity = getHeroMessageOpacityFactor(progress) * heroBubbleRevealState.opacity
 
   return {
@@ -428,7 +430,12 @@ const createHeroMessageStyle = (message, progress, position) => {
     top: `${position.top}%`,
     zIndex: Math.round(progress * 1000) + message.layer,
     opacity,
-    '--message-fog-visibility': getHeroMessageFogVisibility(depth),
+    '--message-backdrop-alpha': (0.16 * fogVisibility).toFixed(3),
+    '--message-backdrop-blur': `${(0.25 + 0.9 * fogVisibility).toFixed(3)}em`,
+    '--message-command-alpha': (0.8 * fogVisibility).toFixed(3),
+    '--message-file-alpha': (0.94 * fogVisibility).toFixed(3),
+    '--message-remi-mark-alpha': (0.2 * fogVisibility).toFixed(3),
+    '--message-text-alpha': fogVisibility.toFixed(3),
     transform: `translate3d(-50%, -50%, ${depth}px) scale(${message.scale})`,
   }
 }
@@ -547,8 +554,8 @@ const MessageBubble = {
         'div',
         {
           class: [
-            'max-w-[min(72vw,22em)] whitespace-nowrap rounded-[999em] px-[0.875em] py-[0.5em] text-[1em] font-normal leading-[1.25em] tracking-tight',
-            props.kind === 'file' ? 'bg-white text-blue-500' : 'bg-blue-500/80 text-white',
+            'hero-message-content relative z-1 max-w-[min(72vw,22em)] whitespace-nowrap rounded-[999em] px-[0.875em] py-[0.5em] text-[1em] font-normal leading-[1.25em] tracking-tight',
+            props.kind === 'file' ? 'hero-message-content-file' : 'hero-message-content-command',
           ],
         },
         slots.default ? slots.default() : null
@@ -558,7 +565,8 @@ const MessageBubble = {
 </script>
 
 <template>
-  <section ref="heroSectionRef" class="relative w-full min-h-[clamp(800px,100svh,100svh)] grid grid-rows-1 grid-cols-1 md:py-4">
+  <section ref="heroSectionRef"
+    class="relative w-full min-h-[clamp(800px,100svh,100svh)] grid grid-rows-1 grid-cols-1 md:py-4">
     <div ref="heroShaderRef" class="hero-shader absolute inset-0 h-full w-full opacity-0 mask-b-from-0% mask-b-to-100%">
       <Shader class="absolute inset-0 h-full w-full" disable-telemetry>
         <ChromaticAberration :strength="1">
@@ -573,24 +581,17 @@ const MessageBubble = {
     </div>
     <div class="w-full max-w-[1400px] px-6 py-24 mx-auto flex flex-col items-center justify-end text-center gap-8">
       <div class="z-1 flex flex-1">
-        <div
-          class="pointer-events-none absolute inset-0 z-1 overflow-hidden perspective-[1100px] transform-3d"
-          aria-hidden="true"
-        >
+        <div class="pointer-events-none absolute inset-0 z-1 overflow-hidden perspective-[1100px] transform-3d"
+          aria-hidden="true">
           <div class="absolute inset-x-0 top-0 h-4/5 transform-3d text-[clamp(0.75rem,1vw,0.95rem)]">
-            <div
-              v-for="(message, index) in heroMessages"
-              :key="message.text"
-              class="hero-message absolute will-change-transform transform-3d"
-              :style="heroMessageStyles[index]"
-            >
-              <div class="hero-message-backdrop relative rounded-[999em]">
+            <div v-for="(message, index) in heroMessages" :key="message.text"
+              class="hero-message absolute will-change-transform transform-3d" :style="heroMessageStyles[index]">
+              <div class="hero-message-backdrop relative overflow-hidden rounded-[999em]">
+                <div class="hero-message-glass" aria-hidden="true"></div>
                 <div class="hero-message-fog">
                   <MessageBubble :kind="message.kind">
-                    <span
-                      v-if="message.mentionRemi"
-                      class="mention relative ml-[-0.375em] mr-[0.5em] px-[0.25em] font-medium text-white before:content-[''] before:absolute before:inset-x-[-0.125em] before:inset-y-[-0.25em] before:z-0 before:rounded-[999em] before:bg-white/20"
-                    >
+                    <span v-if="message.mentionRemi"
+                      class="mention relative ml-[-0.375em] mr-[0.5em] px-[0.25em] font-medium before:content-[''] before:absolute before:inset-x-[-0.125em] before:inset-y-[-0.25em] before:z-0 before:rounded-[999em]">
                       <span class="relative z-1">@Remi</span>
                     </span>
                     <span class="relative z-1">{{ message.text }}</span>
@@ -602,12 +603,14 @@ const MessageBubble = {
         </div>
       </div>
       <div ref="heroCopyRef" class="hero-copy relative z-1 flex translate-y-6 flex-col items-center gap-8 opacity-0">
+
         <h1
-          class="max-w-[20ch] text-[clamp(3.5rem,8vw,5.5rem)] leading-[1em] font-normal tracking-[-0.03em] text-balance text-foreground select-none">
+          class="max-w-[20ch] text-[clamp(3.5rem,8vw,5rem)] leading-[1em] font-normal tracking-[-0.03em] text-balance text-foreground select-none">
           The last operations hire you'll ever need
         </h1>
-        <p class="max-w-[48ch] text-base leading-normal tracking-tight text-muted-foreground">
-          AI-powered operations assistant that learns how your business runs and gets work done for you.
+        <AnnouncementBar />
+        <p class="max-w-[48ch] text-base leading-normal tracking-tight text-foreground/50">
+          Remi is an AI-powered operations assistant that learns how your business runs and gets work done for you.
         </p>
         <div class="flex items-center justify-start gap-2">
           <Button>Book a Demo</Button>
@@ -633,17 +636,44 @@ const MessageBubble = {
 }
 
 .hero-message-fog {
-  opacity: var(--message-fog-visibility);
-  will-change: opacity;
+  position: relative;
+  z-index: 1;
 }
 
-.hero-message-backdrop::before {
+.hero-message-content {
+  backdrop-filter: blur(var(--message-backdrop-blur));
+  color: rgb(var(--message-text-rgb) / var(--message-text-alpha));
+  will-change: backdrop-filter, color, background-color;
+  -webkit-backdrop-filter: blur(var(--message-backdrop-blur));
+}
+
+.hero-message-content-command {
+  --message-text-rgb: 255 255 255;
+  background: rgb(59 130 246 / var(--message-command-alpha));
+}
+
+.hero-message-content-file {
+  --message-text-rgb: 59 130 246;
+  background: rgb(255 255 255 / var(--message-file-alpha));
+}
+
+.mention {
+  color: rgb(255 255 255 / var(--message-text-alpha));
+}
+
+.mention::before {
+  background: rgb(255 255 255 / var(--message-remi-mark-alpha));
+}
+
+.hero-message-glass {
   position: absolute;
   inset: 0;
+  z-index: 0;
   border-radius: inherit;
-  background: rgb(255 255 255 / 0.06);
-  backdrop-filter: blur(0.4em);
-  content: '';
-  -webkit-backdrop-filter: blur(0.4em);
+  background: rgb(255 255 255 / var(--message-backdrop-alpha));
+  backdrop-filter: blur(var(--message-backdrop-blur));
+  pointer-events: none;
+  will-change: backdrop-filter, background-color;
+  -webkit-backdrop-filter: blur(var(--message-backdrop-blur));
 }
 </style>

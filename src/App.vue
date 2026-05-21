@@ -11,6 +11,7 @@ import HomeSliderUiFiles from './components/home/slider-ui/home-slider-ui-files.
 import HomeSliderUiIntegrations from './components/home/slider-ui/home-slider-ui-integrations.vue'
 import HomeSliderUiIntelligence from './components/home/slider-ui/home-slider-ui-intelligence.vue'
 import SectionCanvasSlider from './components/sections/section-canvas-slider.vue'
+import SectionCta from './components/sections/section-cta.vue'
 import SectionFaq from './components/sections/section-faq.vue'
 import SectionFeatureBento from './components/sections/section-feature-bento.vue'
 import SectionHow from './components/sections/section-how.vue'
@@ -70,6 +71,7 @@ const isDemoModalOpen = ref(false)
       </SectionCanvasSlider>
       <SectionIntegrationsMarquee />
       <SectionFaq />
+      <SectionCta @book-demo="isDemoModalOpen = true" />
     </main>
     <GlobalFooter />
   </div>
