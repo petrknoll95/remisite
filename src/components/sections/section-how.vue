@@ -1,5 +1,7 @@
 <script setup>
 import { cn } from '../../lib/cn'
+import HowVisualScan from './components/how-visual-scan.vue'
+import HowVisualReady from './components/how-visual-ready.vue'
 
 const steps = [
   {
@@ -9,10 +11,12 @@ const steps = [
   {
     title: 'Remi learns the business',
     body: 'She scans all your tools and context to build her knowledge base.',
+    visual: HowVisualScan,
   },
   {
     title: 'Remi is ready to go',
     body: 'Ask questions, create documents, route follow-ups, and automate work.',
+    visual: HowVisualReady,
   },
 ]
 </script>
@@ -37,15 +41,16 @@ const steps = [
       )"
     >
       <article v-for="(step, index) in steps" :key="step.title">
-        <div :class="cn('flex min-h-120 h-full flex-col justify-between gap-10 p-8')">
-          <span :class="cn('-ml-4 -mt-4 text-lg size-10 rounded-full bg-foreground text-background flex items-center justify-center font-normal leading-none')">
+        <div :class="cn('relative flex min-h-120 h-full flex-col justify-between gap-3 p-4')">
+          <span :class="cn('absolute top-4 left-4 text-lg size-10 rounded-full bg-foreground text-background flex items-center justify-center font-normal leading-none')">
             {{ String(index + 1).padStart(2, '') }}
           </span>
-          <div :class="cn('flex flex-col gap-0')">
-            <h3 :class="cn('text-2xl font-normal leading-tight tracking-tight text-balance text-foreground')">
+          <component :is="step.visual" v-if="step.visual" />
+          <div :class="cn('flex flex-col gap-0 p-4')">
+            <h3 :class="cn('text-xl font-normal leading-tight tracking-tight text-balance text-foreground')">
               {{ step.title }}
             </h3>
-            <p :class="cn('text-xl leading-tight text-foreground/40')">
+            <p :class="cn('text-lg leading-tight text-foreground/40')">
               {{ step.body }}
             </p>
           </div>

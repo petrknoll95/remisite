@@ -1,6 +1,9 @@
 <script setup>
+import { ref } from 'vue'
 import SiteLogo from '../../global/site-logo.vue'
 import { PhPlus, PhListChecks, PhPlusCircle, PhLightning, PhFolderSimple } from '@phosphor-icons/vue'
+
+const activeSidebarItem = ref('new-task')
 </script>
 
 <template>
@@ -10,23 +13,71 @@ import { PhPlus, PhListChecks, PhPlusCircle, PhLightning, PhFolderSimple } from 
                 <SiteLogo class="size-[1.5em]" />
             </div>
             <ul
-                class="flex flex-col list-none [&>li]:text-[0.75em] [&>li]:leading-normal [&>li]:tracking-tight [&>li]:font-normal [&>li]:text-foreground/50 [&>li]:py-[0.35em] [&>li]:px-[0.8em] [&>li]:rounded-full [&>li]:hover:bg-foreground/5 [&>li]:cursor-pointer [&>li]:flex [&>li]:items-center [&>li]:gap-[0.5em] [&>li>svg]:size-[1em] [&>li>svg]:text-foreground [&>li>svg]:opacity-30 min-w-[10em] gap-[0.125em]">
-                <li class="bg-foreground/5 text-foreground! [&>svg]:opacity-100!">
+                class="flex flex-col list-none [&>li]:relative [&>li]:isolate [&>li]:text-[0.75em] [&>li]:leading-normal [&>li]:tracking-tight [&>li]:font-normal [&>li]:text-foreground/50 [&>li]:py-[0.35em] [&>li]:px-[0.8em] [&>li]:rounded-full [&>li]:cursor-pointer [&>li]:flex [&>li]:items-center [&>li]:gap-[0.5em] [&>li]:transition-colors [&>li]:duration-200 [&>li]:before:absolute [&>li]:before:-inset-[0.25em] [&>li]:before:z-[-1] [&>li]:before:rounded-full [&>li]:before:bg-foreground/5 [&>li]:before:opacity-0 [&>li]:before:transition-[inset,opacity] [&>li]:before:duration-200 [&>li]:before:ease-out [&>li]:before:content-[''] [&>li[data-active=true]]:text-foreground! [&>li[data-active=true]]:before:inset-0 [&>li[data-active=true]]:before:opacity-100 [&>li>svg]:size-[1em] [&>li>svg]:text-foreground [&>li>svg]:opacity-30 [&>li[data-active=true]>svg]:opacity-100! min-w-[10em] gap-[0.125em]">
+                <li
+                    class="relative"
+                    :data-active="activeSidebarItem === 'new-task'"
+                    role="button"
+                    tabindex="0"
+                    @click="activeSidebarItem = 'new-task'"
+                    @keydown.enter="activeSidebarItem = 'new-task'"
+                    @keydown.space.prevent="activeSidebarItem = 'new-task'"
+                >
                     <PhPlus /> New Task
                 </li>
-                <li>
+                <li
+                    class="relative"
+                    :data-active="activeSidebarItem === 'tasks'"
+                    role="button"
+                    tabindex="0"
+                    @click="activeSidebarItem = 'tasks'"
+                    @keydown.enter="activeSidebarItem = 'tasks'"
+                    @keydown.space.prevent="activeSidebarItem = 'tasks'"
+                >
                     <PhListChecks /> Tasks
                 </li>
-                <li>
+                <li
+                    class="relative"
+                    :data-active="activeSidebarItem === 'integrations'"
+                    role="button"
+                    tabindex="0"
+                    @click="activeSidebarItem = 'integrations'"
+                    @keydown.enter="activeSidebarItem = 'integrations'"
+                    @keydown.space.prevent="activeSidebarItem = 'integrations'"
+                >
                     <PhPlusCircle weight="fill" />Integrations
                 </li>
-                <li>
+                <li
+                    class="relative"
+                    :data-active="activeSidebarItem === 'automations'"
+                    role="button"
+                    tabindex="0"
+                    @click="activeSidebarItem = 'automations'"
+                    @keydown.enter="activeSidebarItem = 'automations'"
+                    @keydown.space.prevent="activeSidebarItem = 'automations'"
+                >
                     <PhLightning weight="fill" /> Automations
                 </li>
-                <li>
+                <li
+                    class="relative"
+                    :data-active="activeSidebarItem === 'files'"
+                    role="button"
+                    tabindex="0"
+                    @click="activeSidebarItem = 'files'"
+                    @keydown.enter="activeSidebarItem = 'files'"
+                    @keydown.space.prevent="activeSidebarItem = 'files'"
+                >
                     <PhFolderSimple weight="fill" /> Files
                 </li>
-                <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <li
+                    class="relative"
+                    :data-active="activeSidebarItem === 'intelligence'"
+                    role="button"
+                    tabindex="0"
+                    @click="activeSidebarItem = 'intelligence'"
+                    @keydown.enter="activeSidebarItem = 'intelligence'"
+                    @keydown.space.prevent="activeSidebarItem = 'intelligence'"
+                ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="8.00016" cy="4.41593" r="3.08414" stroke="currentColor"></circle>
                         <circle cx="11.1042" cy="6.20792" r="3.08414" stroke="currentColor"></circle>
                         <circle cx="11.1042" cy="9.79239" r="3.08414" stroke="currentColor"></circle>
