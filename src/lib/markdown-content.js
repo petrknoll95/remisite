@@ -200,6 +200,7 @@ export const renderMarkdown = (markdown) => {
   let paragraphLines = []
   let unorderedItems = []
   let orderedItems = []
+  let quoteLines = []
 
   const flushParagraph = () => {
     if (!paragraphLines.length) {
@@ -222,12 +223,32 @@ export const renderMarkdown = (markdown) => {
     }
   }
 
+  const flushQuotes = () => {
+    if (!quoteLines.length) {
+      return
+    }
+
+    const citationMatch = quoteLines[quoteLines.length - 1].match(/^-\s+(.+)$/)
+    const quoteTextLines = citationMatch ? quoteLines.slice(0, -1) : quoteLines
+    const quoteBody = quoteTextLines
+      .filter(Boolean)
+      .map((item) => `<p>${parseInlineMarkdown(item)}</p>`)
+      .join('')
+    const citation = citationMatch
+      ? `<cite>${parseInlineMarkdown(citationMatch[1])}</cite>`
+      : ''
+
+    html.push(`<blockquote>${quoteBody}${citation}</blockquote>`)
+    quoteLines = []
+  }
+
   lines.forEach((line) => {
     const trimmed = line.trim()
 
     if (!trimmed) {
       flushParagraph()
       flushLists()
+      flushQuotes()
       return
     }
 
@@ -240,6 +261,7 @@ export const renderMarkdown = (markdown) => {
     if (headingMatch) {
       flushParagraph()
       flushLists()
+      flushQuotes()
 
       const level = headingMatch[1].length
       const title = stripMarkdown(headingMatch[2])
@@ -252,6 +274,7 @@ export const renderMarkdown = (markdown) => {
 
     if (unorderedMatch) {
       flushParagraph()
+      flushQuotes()
       if (orderedItems.length) {
         flushLists()
       }
@@ -261,6 +284,7 @@ export const renderMarkdown = (markdown) => {
 
     if (orderedMatch) {
       flushParagraph()
+      flushQuotes()
       if (unorderedItems.length) {
         flushLists()
       }
@@ -271,6 +295,7 @@ export const renderMarkdown = (markdown) => {
     if (imageMatch) {
       flushParagraph()
       flushLists()
+      flushQuotes()
       html.push(`<figure>${parseInlineMarkdown(trimmed)}</figure>`)
       return
     }
@@ -278,15 +303,17 @@ export const renderMarkdown = (markdown) => {
     if (quoteMatch) {
       flushParagraph()
       flushLists()
-      html.push(`<blockquote>${parseInlineMarkdown(quoteMatch[1])}</blockquote>`)
+      quoteLines.push(quoteMatch[1])
       return
     }
 
+    flushQuotes()
     paragraphLines.push(trimmed)
   })
 
   flushParagraph()
   flushLists()
+  flushQuotes()
 
   return {
     html: html.join('\n'),

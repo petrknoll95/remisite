@@ -31,7 +31,7 @@ defineProps({
     'hover:before:-inset-0.5 before:transition-all before:duration-200 before:ease-in-out',
       variant === 'primary' && 'before:bg-foreground text-background hover:before:bg-foreground/90 before:shadow-[0_2px_4px_-3px_rgba(0,0,0,0.5)]',
       variant === 'white' && 'before:bg-white text-foreground hover:before:bg-white/90 before:shadow-[0_1.5px_3px_-2px_rgba(0,0,0,0.25)]',
-    variant === 'secondary' && 'before:bg-foreground/5 text-foreground hover:before:bg-foreground/10 before:backdrop-blur-md',
+    variant === 'secondary' && 'before:bg-muted text-foreground hover:before:bg-muted-hover before:backdrop-blur-md',
     size === 'default' && 'h-10 px-4',
     size === 'sm' && 'h-9 px-3 text-sm',
   )">

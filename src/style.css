@@ -25,7 +25,7 @@
   --scroll-progress-line: 2px;
   --header-bg-inset: 4px;
   --topbar-height: 3em;
-  --hero-height: clamp(800px,100svh,100svh);
+  --hero-height: clamp(800px, 100svh, 100svh);
   --hero-padding: 0.5em 0.5em 0.5em 0.5em;
 
   --tracking-tight: -0.0125em;
@@ -40,13 +40,14 @@
   --color-primary-foreground: var(--color-neutral-50);
   --color-secondary: var(--color-neutral-100);
   --color-secondary-foreground: var(--color-neutral-950);
-  --color-muted: oklch(95.9% 0.008336 81.4);
+  --color-muted: oklch(0.95 0.00625 65.75);
+  --color-muted-hover: oklch(0.94 0.005 65.75);
   --color-muted-foreground: oklch(43.4% 0.008139 81.4);
   --color-accent: var(--color-neutral-100);
   --color-accent-foreground: var(--color-neutral-950);
   --color-destructive: var(--color-neutral-900);
   --color-destructive-foreground: var(--color-neutral-50);
-  --color-border: var(--color-neutral-200);
+  --color-border: oklch(0.945 0.004 65.75);
   --color-input: var(--color-neutral-200);
   --color-ring: var(--color-neutral-950);
 
@@ -85,48 +86,48 @@
       color-mix(in srgb, var(--color-background) 4.9%, transparent) 84.5%,
       color-mix(in srgb, var(--color-background) 1.3%, transparent) 91.9%,
       color-mix(in srgb, var(--color-background) 0%, transparent) 100%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
 
-  @layer base {
-    * {
-      @apply border-border;
-    }
-
-    html {
-      @apply bg-background text-foreground;
-    }
-
-    body {
-      @apply m-0 min-h-svh bg-background font-sans text-foreground antialiased;
-    }
-
-    .debug {
-      @apply border border-red-400 border-dashed;
-    }
-
-    body:has(.announcement-bar) {
-      --hero-height: calc(clamp(800px,100svh,100svh) - var(--topbar-height)) !important;
-      --hero-padding: 0em 0.5em 0.5em 0.5em !important;
-    }
-
-    #app {
-      @apply min-h-svh bg-background;
-    }
-
-    button,
-    input,
-    textarea,
-    select {
-      font: inherit;
-    }
+  html {
+    @apply bg-background text-foreground;
   }
 
-  @keyframes section-slider-timer {
-    from {
-      translate: -100% 0;
-    }
-
-    to {
-      translate: 0 0;
-    }
+  body {
+    @apply m-0 min-h-svh bg-background font-sans text-foreground antialiased;
   }
+
+  .debug {
+    @apply border border-red-400 border-dashed;
+  }
+
+  body:has(.announcement-bar) {
+    --hero-height: calc(clamp(800px, 100svh, 100svh) - var(--topbar-height)) !important;
+    --hero-padding: 0em 0.5em 0.5em 0.5em !important;
+  }
+
+  #app {
+    @apply min-h-svh bg-background;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+@keyframes section-slider-timer {
+  from {
+    translate: -100% 0;
+  }
+
+  to {
+    translate: 0 0;
+  }
+}

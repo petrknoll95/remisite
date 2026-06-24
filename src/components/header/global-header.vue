@@ -305,7 +305,7 @@ onBeforeUnmount(() => {
                               :key="item.label"
                               :href="item.href"
                               :class="cn(
-                                'border-b border-foreground/5 py-3 text-xl font-medium leading-tight tracking-[-0.04em] text-foreground transition-colors hover:text-foreground/70 focus-visible:outline-none md:border-b-0 md:tracking-normal md:hover:text-foreground md:focus-visible:text-foreground',
+                                'border-b border-border py-3 text-xl font-medium leading-tight tracking-[-0.04em] text-foreground transition-colors hover:text-foreground/70 focus-visible:outline-none md:border-b-0 md:tracking-normal md:hover:text-foreground md:focus-visible:text-foreground',
                                 column.variant === 'featured' && 'md:pb-[0.25em] md:pt-0 md:text-xl md:font-medium md:text-foreground',
                                 column.variant === 'compact' && 'md:py-[0.2em] md:text-sm md:font-normal md:leading-tight md:text-muted-foreground'
                               )"

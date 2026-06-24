@@ -70,7 +70,7 @@ watch(
               'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
               selectedIndex === index
                 ? 'bg-foreground text-background'
-                : 'bg-foreground/5 text-foreground hover:bg-foreground/10'
+                : 'bg-muted text-foreground hover:bg-muted-hover'
             )" @click="setActiveIndex(index)">
             {{ caseStudy.industryLabel }}
           </button>
@@ -79,20 +79,12 @@ watch(
 
       <div ref="emblaRef" class="overflow-hidden" data-active-case-study>
         <div class="flex">
-          <div
-            v-for="(caseStudy, index) in visibleCaseStudies"
-            :key="caseStudy.path"
-            class="min-w-0 flex-[0_0_100%]"
-          >
-            <div
-              class="grid gap-2 lg:h-140 lg:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] lg:items-stretch"
-              :aria-hidden="selectedIndex !== index"
-              :inert="selectedIndex !== index"
-            >
+          <div v-for="(caseStudy, index) in visibleCaseStudies" :key="caseStudy.path" class="min-w-0 flex-[0_0_100%]">
+            <div class="grid gap-2 lg:h-140 lg:items-stretch"
+              :aria-hidden="selectedIndex !== index" :inert="selectedIndex !== index">
               <article
-                class="grid min-h-0 overflow-hidden rounded-3xl bg-background p-2 shadow-[0_0_0_1px_inset_var(--color-border)] lg:h-full lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
-              >
-                <div class="flex min-h-0 flex-col items-start justify-between gap-10 p-8 lg:h-full">
+                class="grid min-h-0 overflow-hidden rounded-3xl bg-background p-2 shadow-[0_0_0_1px_inset_var(--color-border)] lg:h-full lg:grid-cols-[2fr_1fr_1fr] gap-y-4 gap-x-2">
+                <div class="flex min-h-0 flex-col items-start justify-between gap-10 p-8 lg:h-full lg:max-w-md">
                   <div class="flex flex-col items-start gap-6">
                     <p class="text-sm font-medium leading-tight tracking-tight text-muted-foreground">
                       {{ caseStudy.industryLabel }}
@@ -100,7 +92,7 @@ watch(
                     <h3 class="w-full text-3xl font-normal leading-none tracking-tight text-balance text-foreground">
                       {{ caseStudy.title }}
                     </h3>
-                    <Button :href="caseStudy.path" variant="secondary" size="sm">
+                    <Button :href="caseStudy.path" variant="secondary" size="default">
                       <span>Read more</span>
                     </Button>
                   </div>
@@ -110,31 +102,24 @@ watch(
                   </p>
                 </div>
 
-                <figure class="relative aspect-[4/3] min-h-0 w-full overflow-hidden rounded-2xl bg-background lg:aspect-auto lg:h-full">
-                  <img
-                    :src="caseStudy.coverImageUrl"
-                    :alt="getImageAlt(caseStudy)"
-                    class="absolute inset-0 size-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  >
+                <dl class="flex min-h-0 flex-col gap-2 lg:h-full">
+                  <div v-for="stat in caseStudy.stats" :key="`${stat.metric}-${stat.label}`"
+                    class="flex min-h-0 flex-1 flex-col justify-between gap-2 rounded-2xl bg-muted p-6 text-foreground">
+                    <dt class="text-sm leading-snug text-pretty capitalize text-muted-foreground">
+                      {{ stat.label }}
+                    </dt>
+                    <dd class="mt-2 text-3xl font-normal leading-none tracking-tight tabular-nums">
+                      {{ stat.metric }}
+                    </dd>
+                  </div>
+                </dl>
+
+                <figure
+                  class="order-first lg:order-last relative aspect-2/1 min-h-0 w-full overflow-hidden rounded-2xl bg-background lg:aspect-auto lg:h-full">
+                  <img :src="caseStudy.coverImageUrl" :alt="getImageAlt(caseStudy)"
+                    class="absolute inset-0 size-full object-cover" loading="lazy" decoding="async">
                 </figure>
               </article>
-
-              <dl class="flex min-h-0 flex-col gap-2 lg:h-full">
-                <div
-                  v-for="stat in caseStudy.stats"
-                  :key="`${stat.metric}-${stat.label}`"
-                  class="flex min-h-0 flex-1 flex-col justify-between gap-2 rounded-2xl bg-foreground p-6 text-background"
-                >
-                  <dt class="text-sm leading-snug text-pretty">
-                    {{ stat.label }}
-                  </dt>
-                  <dd class="mt-2 text-4xl font-normal leading-none tracking-tight tabular-nums">
-                    {{ stat.metric }}
-                  </dd>
-                </div>
-              </dl>
             </div>
           </div>
         </div>

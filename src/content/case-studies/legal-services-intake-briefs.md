@@ -1,11 +1,14 @@
 ---
-title: "Matter briefs before the approval queue stalls"
+title: "How a legal services team shortened intake review by one day with Remi"
 description: "Intake moved faster without loosening review. Remi gathered the matter context, approvals, and source links the team needed before the next decision."
 datePublished: "2026-06-12"
 author: "Remi Team"
 category: "Case Study"
 company: "Anonymized legal services team"
 industryLabel: "Legal services"
+useCase: "Intake and matter review"
+companySize: "11-50"
+region: "Europe"
 coverImageUrl: "/images/case-studies/legal-cover.jpg"
 coverImageAlt: "Two professionals reviewing legal documents in an office"
 thumbnailImageUrl: "/images/case-studies/legal-cover.jpg"
@@ -17,39 +20,30 @@ stats:
     label: "matter briefs reviewed with source links"
   - metric: "0"
     label: "client-visible actions without approval"
-ogTitle: "Matter briefs before the approval queue stalls"
+ogTitle: "How a legal services team shortened intake review by one day with Remi"
 ogDescription: "Matter context, intake questions, and approvals came together before client-visible work moved forward."
 ogImage: "https://images.pexels.com/photos/7841459/pexels-photo-7841459.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
 ---
 
-## Intake needed a steadier hand
+A legal services team needed intake and matter review to move faster without loosening control. Remi helped gather the right context before review, so the team could see missing information, stale approvals, and source evidence before deciding the next step.
 
-A legal services team was coordinating intake, matter updates, document requests, and approvals across email, notes, calendars, and internal chat.
+## The challenge
 
-The firm did not want a tool acting loudly in client-visible spaces. It needed a controlled way to assemble context before a person reviewed the next step.
+The team coordinated intake, matter updates, document requests, and approvals across email, notes, calendars, and internal chat. The work was sensitive, and client-visible action needed to stay conservative.
 
-## Signals Remi kept connected
+The firm did not want a tool acting loudly in shared spaces or treating flagged work as finished. It needed a controlled way to assemble matter context, route intake questions, and make waiting approvals visible before they became client-facing delays.
 
-Remi watched for operational signals that shaped matter readiness while keeping client-visible work conservative.
+## The solution
 
-- Intake questions that needed routing to the right person
-- Matter notes with missing documents, dates, or client context
-- Email threads waiting on approval or clarification
-- Calendar events that changed preparation timing
-- Internal decisions that needed to stay connected to the source
+Remi watched for operational signals that shaped matter readiness: intake questions that needed routing, matter notes with missing documents or dates, email threads waiting on approval, calendar events that changed preparation timing, and internal decisions that needed to stay connected to the source.
 
-## The review packet Remi prepared
+Remi assembled matter briefs with source links, routed intake questions for review, and flagged stale approvals that might slow the next step. It prepared the context so a person could decide what should happen next.
 
-Remi assembled matter briefs with source links, routed intake questions for review, and flagged stale approvals that might slow the next step.
+## The results
 
-It did not treat flagged work as completed. It prepared the context so a person could decide what should happen next.
-
-## Why restraint helped
-
-The team could review matter context without searching across every thread first. Intake questions, missing information, and waiting approvals were visible before they became client-facing delays.
+The team could review matter context without searching across every thread first. Intake-to-review handoff time shortened by a day, and every matter brief stayed tied to source links for review.
 
 For legal services, the useful outcome was not more activity. It was faster review, clearer evidence, and tighter control before anything reached a client.
 
-## The next review habit
-
-The team began using Remi-prepared briefs before internal review. Each brief showed the source, the likely owner, and the decision still needed, giving the team a steadier way to move work forward.
+> "The useful part is that Remi does not skip our review. It brings the matter notes, missing approvals, and source links into one brief so we can decide with the context in front of us."
+> - Operations manager, legal services team

@@ -32,7 +32,7 @@ import IconAcrobatPdf from '../../misc/icon-acrobat-pdf.vue'
         <div class="flex flex-col gap-[0.25em]">
           <span>You got it!</span>
           <span
-            class="relative p-[0.25em] rounded-[0.75em] border border-foreground/10 flex items-center justify-center gap-[0.25em]"
+            class="relative p-[0.25em] rounded-[0.75em] border border-border flex items-center justify-center gap-[0.25em]"
           >
             <IconAcrobatPdf class-name="size-[2.75em] shrink-0" />
             <span class="flex flex-col gap-[0.5em] pl-[0.25em] pr-[1em]">
@@ -43,7 +43,7 @@ import IconAcrobatPdf from '../../misc/icon-acrobat-pdf.vue'
             </span>
             <span class="hidden md:flex items-center justify-center h-full pr-[0.4em]">
               <span :class="cn(
-                'flex gap-[0.125em] p-[0.125em] rounded-[0.375em] border border-foreground/10 shadow-[0_1px_1px_0_color-mix(in_oklch,var(--color-foreground)_5%,transparent)]',
+                'flex gap-[0.125em] p-[0.125em] rounded-[0.375em] border border-border shadow-[0_1px_1px_0_color-mix(in_oklch,var(--color-foreground)_5%,transparent)]',
                 '[&_div]:p-[0.25em] [&_div]:rounded-[0.25em] [&_div]:bg-foreground/0 [&_div]:hover:bg-foreground/5 [&_div]:transition-all'
               )">
                 <div>

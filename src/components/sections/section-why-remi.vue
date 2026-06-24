@@ -31,7 +31,7 @@ const comparisonRows = [
 ]
 
 const rowBaseClasses = cn(
-  'border-b border-foreground/10 last:border-b-0',
+  'border-b border-border last:border-b-0',
   'transition-colors duration-150 hover:bg-foreground/[0.025]',
 )
 </script>
@@ -49,8 +49,8 @@ const rowBaseClasses = cn(
         </p>
       </div>
 
-      <div :class="cn('hidden w-full overflow-hidden rounded-3xl border border-foreground/10 bg-background md:block')">
-        <div :class="cn('grid grid-cols-[1.15fr_1fr_1fr] border-b border-foreground/10')">
+      <div :class="cn('hidden w-full overflow-hidden rounded-3xl border border-border bg-background md:block')">
+        <div :class="cn('grid grid-cols-[1.15fr_1fr_1fr] border-b border-border')">
           <div :class="cn('px-6 py-5')" />
           <div :class="cn('flex min-w-0 items-start px-6 py-5')">
             <span :class="cn('text-base font-medium leading-tight text-foreground')">
@@ -89,8 +89,8 @@ const rowBaseClasses = cn(
         </div>
       </div>
 
-      <div :class="cn('flex w-full flex-col overflow-hidden rounded-3xl border border-foreground/10 bg-background md:hidden')">
-        <div :class="cn('grid grid-cols-2 border-b border-foreground/10')">
+      <div :class="cn('flex w-full flex-col overflow-hidden rounded-3xl border border-border bg-background md:hidden')">
+        <div :class="cn('grid grid-cols-2 border-b border-border')">
           <div :class="cn('flex min-w-0 items-start px-5 py-4')">
             <span :class="cn('text-sm font-medium leading-tight text-foreground')">
               Usual way
